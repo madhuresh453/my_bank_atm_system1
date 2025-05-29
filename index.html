@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY ONLINE BANK</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/pngtree-vector-bank-icon-png-image_532993.jpg" type="image/x-icon">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body id="vanta-bg">
+    <div class="container">
+        
+
+        <h1>🏦 STUDENT BANK</h1>
+
+        <div id="staff-login" class="section">
+            <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_4kx2q32n.json" background="transparent" speed="1" style="width: 80px; height: 80px; margin:auto; filter: drop-shadow(0 4px 16px #38e2ad88);" loop autoplay></lottie-player>
+            <h2><span class="animated-text three-d-text">👨‍💼 Staff Login</span></h2>
+            <label for="staff-username">👤 Username:</label>
+            <input type="text" id="staff-username">
+            <label for="staff-password">🔒 Password:</label>
+            <input type="password" id="staff-password">
+            <button id="staff-login-btn">🔓 Login</button>
+            <p id="staff-login-message"></p>
+        </div>
+
+        <div id="main-menu" class="section hidden">
+            <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_9cyyl8i4.json" background="transparent" speed="1" style="width: 80px; height: 80px; margin:auto; filter: drop-shadow(0 4px 16px #38e2ad88);" loop autoplay></lottie-player>
+            <h2><span class="animated-text three-d-text">🖥️ ATM Main Menu (<span id="current-role"></span>)</span></h2>
+            <button id="view-all-users-btn" class="hidden">👥 View All Users</button>
+            <button id="add-user-btn" class="hidden">➕ Add User</button>
+            <button id="select-user-by-account-btn" class="hidden">🔎 Select User by Account</button>
+            <button id="delete-user-btn" class="hidden">🗑️ Delete User</button>
+            <button id="find-user-by-name-btn" class="hidden">🔍 Find User by Name</button>
+            <button id="forgot-pin-btn" class="hidden">❓ Forgot PIN (Admin Only)</button>
+            <button id="total-money-btn" class="hidden">💰 Total Remaining Money</button>
+            <button id="logout-btn">🚪 Logout</button>
+        </div>
+
+        <div id="user-management" class="section hidden">
+            <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_7wwm6jyb.json" background="transparent" speed="1" style="width: 80px; height: 80px; margin:auto; filter: drop-shadow(0 4px 16px #38e2ad88);" loop autoplay></lottie-player>
+            <h2><span class="animated-text three-d-text">👤 User Management</span></h2>
+            <div id="add-user-form" class="hidden">
+                <h3>➕ Add New User</h3>
+                <label for="new-user-name">👤 Name:</label>
+                <input type="text" id="new-user-name">
+                <label for="new-user-mobile">📱 Mobile Number (10 digits):</label>
+                <input type="text" id="new-user-mobile" maxlength="10">
+                <label for="new-user-email">✉️ Email:</label>
+                <input type="email" id="new-user-email">
+                <label for="new-user-address">🏠 Address:</label>
+                <input type="text" id="new-user-address">
+                <label for="new-user-balance">💵 Initial Balance:</label>
+                <input type="number" id="new-user-balance" step="0.01" min="0">
+                <label for="new-user-pin">🔑 4-digit PIN:</label>
+                <input type="password" id="new-user-pin" maxlength="4">
+                <label for="new-user-sq">❓ Security Question:</label>
+                <input type="text" id="new-user-sq">
+                <label for="new-user-sa">📝 Security Answer:</label>
+                <input type="text" id="new-user-sa">
+                <label for="new-user-image">🖼️ User Image:</label>
+                <input type="file" id="new-user-image" accept="image/*">
+                <button type="button" id="submit-add-user-btn">✅ Add User</button>
+                <span id="add-user-message"></span>
+                <button class="back-to-main-menu">🔙 Back to Main Menu</button>
+            </div>
+
+            <div id="select-user-form" class="hidden">
+                <h3>🔎 Select User by Account Number</h3>
+                <label for="select-acc-num">#️⃣ Account Number:</label>
+                <input type="number" id="select-acc-num">
+                <button id="submit-select-user-btn">🔍 Select</button>
+                <p id="select-user-message"></p>
+                <button class="back-to-main-menu">🔙 Back to Main Menu</button>
+            </div>
+
+            <div id="delete-user-form" class="hidden">
+                <h3>🗑️ Delete User</h3>
+                <label for="delete-user-name">👤 Name:</label>
+                <input type="text" id="delete-user-name">
+                <label for="delete-acc-num">#️⃣ Account Number:</label>
+                <input type="number" id="delete-acc-num">
+                <label for="delete-pin">🔑 PIN:</label>
+                <input type="password" id="delete-pin">
+                <button id="submit-delete-user-btn">❌ Delete User</button>
+                <p id="delete-user-message"></p>
+                <button class="back-to-main-menu">🔙 Back to Main Menu</button>
+            </div>
+
+            <div id="find-user-by-name-form" class="hidden">
+                <h3>🔍 Find User by Name</h3>
+                <label for="find-user-name">👤 User Name:</label>
+                <input type="text" id="find-user-name">
+                <button id="submit-find-user-btn">🔎 Find User</button>
+                <p id="find-user-name-message"></p>
+                <button class="back-to-main-menu">🔙 Back to Main Menu</button>
+            </div>
+
+            <div id="forgot-pin-form" class="hidden">
+                <h3>❓ Forgot PIN (Admin)</h3>
+                <label for="forgot-pin-acc-num">#️⃣ Account Number:</label>
+                <input type="number" id="forgot-pin-acc-num">
+                <button id="submit-forgot-pin-btn">🔑 Retrieve PIN</button>
+                <p id="forgot-pin-message"></p>
+                <button class="back-to-main-menu">🔙 Back to Main Menu</button>
+            </div>
+        </div>
+
+        <div id="user-display" class="section hidden">
+            <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_8wREpI.json" background="transparent" speed="1" style="width: 80px; height: 80px; margin:auto; filter: drop-shadow(0 4px 16px #38e2ad88);" loop autoplay></lottie-player>
+            <h2><span class="animated-text three-d-text">👤 User Details</span></h2>
+            <img id="user-detail-image" src="" alt="User Image" style="display:none; max-width:120px; border-radius:8px; margin-bottom:10px; box-shadow: 0 8px 24px #38e2ad55, 0 1.5px 8px #0002;">
+            <pre id="display-area"></pre>
+            <button class="back-to-main-menu">🔙 Back to Main Menu</button>
+        </div>
+
+        <div id="user-menu" class="section hidden">
+            <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_2ks3pjua.json" background="transparent" speed="1" style="width: 80px; height: 80px; margin:auto; filter: drop-shadow(0 4px 16px #38e2ad88);" loop autoplay></lottie-player>
+            <h2 id="current-user-header" class="animated-text three-d-text"></h2>
+            <label for="user-pin">🔑 Enter PIN:</label>
+            <input type="password" id="user-pin" maxlength="4">
+            <button id="authenticate-user-btn">✅ Authenticate</button>
+            <p id="user-auth-message"></p>
+
+            <div id="authenticated-user-options" class="hidden">
+                <button id="check-balance-btn">💳 Check Balance</button>
+                <button id="view-profile-btn">👁️ View Profile</button>
+                <button id="update-mobile-btn">📱 Update Mobile Number</button>
+                <button id="withdraw-cash-btn">💸 Withdraw Cash</button>
+                <button id="change-pin-btn">🔑 Change PIN</button>
+                <button id="view-transactions-btn">📜 View Transaction History</button>
+                <button id="deposit-cash-btn">💰 Deposit Cash</button>
+                <button id="export-txt-btn">📝 Export TXT History</button>
+                <button id="export-pdf-btn">📄 Export PDF History</button>
+                <button id="transfer-money-btn">🔁 Transfer Money</button>
+                <button id="print-history-btn">🖨️ Print History</button>
+                <button id="exit-user-menu-btn">🚪 Exit User Menu</button>
+                <button id="export-all-users-custom-btn" class="hidden">⬇️ Export All Users (Custom File)</button>
+
+                <div id="transaction-input-area" class="hidden">
+                    <h3>Transaction</h3>
+                    <label for="transaction-amount">Amount:</label>
+                    <input type="number" id="transaction-amount" step="0.01" min="0">
+                    <button id="confirm-transaction-btn"></button>
+                    <button id="cancel-transaction-btn">Cancel</button>
+                    <p id="transaction-message"></p>
+                </div>
+
+                <div id="mobile-update-input-area" class="hidden">
+                    <h3>Update Mobile Number</h3>
+                    <label for="old-mobile-num">Old Mobile:</label>
+                    <input type="text" id="old-mobile-num" maxlength="10">
+                    <label for="new-mobile-num">New Mobile:</label>
+                    <input type="text" id="new-mobile-num" maxlength="10">
+                    <button id="confirm-mobile-update-btn">Update</button>
+                    <button id="cancel-mobile-update-btn">Cancel</button>
+                    <p id="mobile-update-message"></p>
+                </div>
+
+                <div id="pin-change-input-area" class="hidden">
+                    <h3>Change PIN</h3>
+                    <label for="current-pin">Current PIN:</label>
+                    <input type="password" id="current-pin" maxlength="4">
+                    <label for="new-pin">New PIN (4 digits):</label>
+                    <input type="password" id="new-pin" maxlength="4">
+                    <button id="confirm-pin-change-btn">Change PIN</button>
+                    <button id="cancel-pin-change-btn">Cancel</button>
+                    <p id="pin-change-message"></p>
+                </div>
+
+                <div id="transfer-money-input-area" class="hidden">
+                    <h3>Transfer Money</h3>
+                    <label for="transfer-option">Transfer by:</label>
+                    <select id="transfer-option">
+                        <option value="account">Account Number</option>
+                        <option value="name">Name</option>
+                    </select>
+                    <div id="transfer-account-input" class="transfer-input">
+                        <label for="transfer-recipient-acc">Recipient Account Number:</label>
+                        <input type="number" id="transfer-recipient-acc">
+                    </div>
+                    <div id="transfer-name-input" class="transfer-input hidden">
+                        <label for="transfer-recipient-name">Recipient Name:</label>
+                        <input type="text" id="transfer-recipient-name">
+                    </div>
+                    <label for="transfer-amount">Amount (₹):</label>
+                    <input type="number" id="transfer-amount" step="0.01" min="0">
+                    <button id="confirm-transfer-btn">Transfer</button>
+                    <button id="cancel-transfer-btn">Cancel</button>
+                    <p id="transfer-message"></p>
+                </div>
+
+                <div id="receipt-display" class="hidden">
+                    <h3>Transaction Receipt</h3>
+                    <pre id="receipt-content"></pre>
+                </div>
+
+                <div id="transaction-history-display" class="hidden">
+                    <h3>Transaction History</h3>
+                    <pre id="history-content"></pre>
+                </div>
+
+            </div>
+            <button id="user-menu-back-to-main" class="hidden">🔙 Back to Main Menu</button>
+        </div>
+
+        <div id="cashier-menu" class="section hidden">
+            <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_6ksqmvqv.json" background="transparent" speed="1" style="width: 80px; height: 80px; margin:auto; filter: drop-shadow(0 4px 16px #38e2ad88);" loop autoplay></lottie-player>
+            <h2><span class="animated-text three-d-text">💼 Cashier Menu</span></h2>
+            <button id="cashier-deposit-btn">💰 Deposit Cash for User</button>
+            <button id="cashier-withdraw-btn">💸 Withdraw Cash for User</button>
+            <button id="exit-cashier-menu-btn">🚪 Exit Cashier Menu</button>
+
+            <div id="cashier-transaction-input-area" class="hidden">
+                <h3>Cashier Transaction</h3>
+                <label for="cashier-acc-num">Account Number:</label>
+                <input type="number" id="cashier-acc-num">
+                <label for="cashier-amount">Amount:</label>
+                <input type="number" id="cashier-amount" step="0.01" min="0">
+                <button id="confirm-cashier-transaction-btn"></button>
+                <button id="cancel-cashier-transaction-btn">Cancel</button>
+                <p id="cashier-transaction-message"></p>
+            </div>
+            <button id="cashier-menu-back-to-main" class="hidden">🔙 Back to Main Menu</button>
+        </div>
+
+        <div id="total-money-card" class="hidden" style="margin:20px auto; max-width:350px; background:#f8f9fa; border-radius:10px; box-shadow:0 2px 8px #0001; padding:24px; text-align:center; font-size:1.3em; font-weight:bold; color:#2d6a4f;">
+            <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_5ngs2ksb.json" background="transparent" speed="1" style="width: 60px; height: 60px; margin:auto; filter: drop-shadow(0 4px 16px #38e2ad88);" loop autoplay></lottie-player>
+            <span class="animated-text three-d-text">💰 Total Remaining Money in Bank:</span> <span id="total-money-value">₹0.00</span>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <!-- 3D Animated Background Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+VANTA.NET({
+  el: "#vanta-bg",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x38e2ad,
+  backgroundColor: 0x181c24,
+  points: 16.0,
+  maxDistance: 22.0,
+  spacing: 18.0
+});
+</script>
+</body>
+</html>
